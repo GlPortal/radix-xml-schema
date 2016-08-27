@@ -91,6 +91,7 @@
 		 <xs:choice maxOccurs="unbounded">
       			<xs:element name="position" type="Position"/>
 			<xs:element name="scale" type="Scale"/>
+			<xs:element name="rotation" type="Rotation"/>
 		 </xs:choice>
 		<xs:attribute name="mesh" type="xs:string"/>
 		<xs:attribute name="mid" type="xs:integer"/>

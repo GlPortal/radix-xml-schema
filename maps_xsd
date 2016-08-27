@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:complexType name="Position">
+	<xs:attribute name="x" type="xs:decimal"/>
+	<xs:attribute name="y" type="xs:decimal"/>
+	<xs:attribute name="z" type="xs:decimal"/>
+</xs:complexType>
+
+<xs:complexType name="Scale">
+	<xs:attribute name="x" type="xs:decimal"/>
+	<xs:attribute name="y" type="xs:decimal"/>
+	<xs:attribute name="z" type="xs:decimal"/>
+</xs:complexType>
+
+<xs:complexType name="Rotation">
+	<xs:attribute name="x" type="xs:decimal"/>
+	<xs:attribute name="y" type="xs:decimal"/>
+	<xs:attribute name="z" type="xs:decimal"/>
+</xs:complexType>
+
+<xs:element name="map">
+<xs:complexType>
+ <xs:choice maxOccurs="unbounded">
+	<xs:element name="materials">
+	<xs:complexType>
+		 <xs:choice maxOccurs="unbounded">
+      			<xs:element name="mat">
+				<xs:complexType>
+					<xs:attribute name="mid" type="xs:integer"/>
+					<xs:attribute name="name" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
+		 </xs:choice>
+	
+	</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="wall">
+	<xs:complexType>
+		
+			 <xs:choice maxOccurs="unbounded">
+				<xs:element name="position" type="Position"/>
+				<xs:element name="scale" type="Scale"/>
+				<xs:element name="rotation" type="Rotation"/>
+			 </xs:choice>
+			<xs:attribute name="mid" type="xs:integer"/>
+	</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="light">
+	<xs:complexType>
+		<xs:attribute name="b" type="xs:decimal"/>
+		<xs:attribute name="distance" type="xs:decimal"/>
+		<xs:attribute name="energy" type="xs:decimal"/>
+		<xs:attribute name="g" type="xs:decimal"/>
+		<xs:attribute name="r" type="xs:decimal"/>
+		<xs:attribute name="specular" type="xs:decimal"/>
+		<xs:attribute name="x" type="xs:decimal"/>
+		<xs:attribute name="y" type="xs:decimal"/>
+		<xs:attribute name="z" type="xs:decimal"/>
+	</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="end">
+	<xs:complexType>
+		 <xs:choice maxOccurs="unbounded">
+      			<xs:element name="position" type="Position"/>
+			<xs:element name="rotation" type="Rotation"/>
+		 </xs:choice>
+	</xs:complexType>
+	</xs:element>
+
+	
+	<xs:element name="spawn">
+	<xs:complexType>
+		 <xs:choice maxOccurs="unbounded">
+      			<xs:element name="position" type="Position"/>
+			<xs:element name="rotation" type="Rotation"/>
+		 </xs:choice>
+	</xs:complexType>
+	</xs:element>
+
+
+	<xs:element name="object">
+	<xs:complexType>
+		
+		 <xs:choice maxOccurs="unbounded">
+      			<xs:element name="position" type="Position"/>
+			<xs:element name="scale" type="Scale"/>
+		 </xs:choice>
+		<xs:attribute name="mesh" type="xs:string"/>
+		<xs:attribute name="mid" type="xs:integer"/>
+	</xs:complexType>
+	</xs:element>
+
+	<xs:element name="acid">
+	<xs:complexType>
+		
+		 <xs:choice maxOccurs="unbounded">
+      			<xs:element name="position" type="Position"/>
+			<xs:element name="scale" type="Scale"/>
+		 </xs:choice>
+	</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="trigger">
+	<xs:complexType>
+		<xs:choice maxOccurs="unbounded">
+      			<xs:element name="position" type="Position"/>
+			<xs:element name="scale" type="Scale"/>
+		</xs:choice>
+		<xs:attribute name="type" type="xs:string"/>
+	</xs:complexType>
+	</xs:element>
+ </xs:choice>
+</xs:complexType>
+</xs:element>
+
+</xs:schema>

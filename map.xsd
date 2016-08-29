@@ -134,20 +134,46 @@
 	</xs:all>
 </xs:complexType>
 
+
+
 <xs:complexType name="t_Trigger">
 	<xs:all>
       		<xs:element name="position" type="Position"/>
 		<xs:element name="scale" type="Scale"/>
+		<xs:element name="rotation" type="Rotation" minOccurs="0"/>
+		<xs:element name="spawn" type="t_Spawn" minOccurs="0"/>
 	</xs:all>
-	<xs:attribute name="type" type="xs:string" use="required"/>
+	<xs:attribute name="type" type="att_allowedTriggers" use="required"/>
+	<!--attributes for music-->
+	<xs:attribute name="loop" type="xs:boolean" use="optional" default="false"/>
+	<xs:attribute name="track" type="xs:string" use="required"/>
+	<!--attributes for map-->
+	<xs:attribute name="map" type="xs:string" use="required"/>
+	<!--attributes for remove--> 
+	<xs:attribute name="toggle" type="xs:boolean" use="required"/>
+	<xs:attribute name="action" type="xs:boolean" use="required"/>
+	<xs:attribute name="ref" type="xs:string" use="required"/>
+	<!--attributes for script-->
+	<xs:attribute name="callback" type="xs:string" use="required"/>
 </xs:complexType>
 
+<xs:simpleType name="att_allowedTriggers">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="death"/>
+		<xs:enumeration value="wind"/>
+		<xs:enumeration value="radiation"/>
+		<xs:enumeration value="music"/>
+		<xs:enumeration value="map"/>
+		<xs:enumeration value="checkpoint"/>
+		<xs:enumeration value="remove"/>
+		<xs:enumeration value="script"/>
+	</xs:restriction>
+</xs:simpleType>
 
 
 <xs:element name="map">
 <xs:complexType>
 <xs:choice maxOccurs="unbounded">
-
 	<xs:element name="authors" type="t_Authors"/>
 	<xs:element name="materials" type="t_Materials"/>
 	<xs:element name="wall" type="t_Wall"/>
@@ -156,8 +182,8 @@
 	<xs:element name="model" type="t_Model"/>
 	<xs:element name="spawn" type="t_Spawn"/>
 	<xs:element name="acid" type="t_Acid"/>
+	<xs:element name="script" type="xs:string"/>
 	<xs:element name="trigger" type="t_Trigger"/>
-	
  </xs:choice>
 </xs:complexType>
 </xs:element>

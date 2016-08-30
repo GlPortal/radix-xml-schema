@@ -24,7 +24,7 @@
 </xs:complexType>
 
 
-<xs:element name="mat">
+<xs:element name="material">
 <xs:complexType>
 	<xs:choice maxOccurs="unbounded">
 		<xs:element name="diffuse" type="t_pathElement"/>

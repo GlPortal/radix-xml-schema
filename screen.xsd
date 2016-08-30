@@ -59,6 +59,7 @@ container inherits-->
 <xs:complexType name="t_container">
 	<xs:choice maxOccurs="unbounded">
 		<xs:element name="page" type="t_page"/>
+		<xs:element name="list" type="t_list"/>
 		<xs:element name="text" type="t_text"/>
 		<xs:element name="image" type="t_image"/>
 	</xs:choice>
